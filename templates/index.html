@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewpoint" content="width=device-width, intial-scale=1.0">
+	<title>Todo App</title>
+</head>
+<body>
+	<div>
+		<h1>
+			[Todo]
+		</h1>
+		{% if msg %}
+		<span>{{ msg }}</span>
+		{% endif %}
+	</div>
+	<!-- FORM -->
+	<div>
+		<form method="POST" action="/post">
+			<div>
+				<label>Name:</label>
+				<input type="text" name="name" placeholder="NAME..." maxlength="50">
+			</div>
+			<div>
+				<label>Todo:</label>
+				<input type="text" name="todo" placeholder="Todo..." maxlength="255">
+			</div>
+			<div>
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+	<!-- TABLE -->
+	<div>
+		<h3>Todos registered</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>TODO</th>
+					<th>CREATED_AT</th>
+					<th>UPDATED_AT</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if todos %}
+				{% for todo in todos %}
+				<tr>
+					<th>{{ todo.id }}</th>
+					<th>{{ todo.name }}</th>
+					<th>{{ todo.todo}}</th>
+					<th>{{ todo.created_at }}</th>
+					<th>{{ todo.updated_at }}</th>
+				</tr>
+				{% endfor %}
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
