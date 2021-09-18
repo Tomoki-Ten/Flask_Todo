@@ -10,9 +10,12 @@
 		<h1>
 			[Todo]
 		</h1>
-		{% if msg %}
-		<span>{{ msg }}</span>
-		{% endif %}
+		<h2>
+			<span>[MESSAGE]:</span>
+			{% if msg %}
+			<span style="color:red">{{ msg }}</span>
+			{% endif %}
+		</h2>
 	</div>
 	<!-- FORM -->
 	<div>
