@@ -8,24 +8,24 @@
 <body>
 	<div>
 		<h1>
-			[Todo]: Delete
+			[Todo]: Update
 		</h1>
 		{% if msg %}
 		<span>{{ msg }}</span>
 		{% endif %}
 	</div>
 	<div>
-		<form method="POST" action="/delete">
+		<form method="POST" action="/update">
 			<div>
-				<span>NAME: </span>
-				<p>{{ record.name }}</p>
+				<label>NAME: </label>
+				<input type="text" name="name" value="{{ record.name }}">
 			</div>
 			<div>
-				<span>TODO: </span>
-				<p>{{ record.todo }}</p>
+				<label>TODO: </label>
+				<input type="text" name="todo" value="{{ record.todo }}">
 			</div>
 			<input type="hidden" name="id" value="{{ record.id }}">
-			<button button="submit">DELETE</button>
+			<button button="submit">UPDATE</button>
 		</form>
 	</div>
 </body>

@@ -34,7 +34,30 @@ def create():
 	else:
 		msg = 'Invalid Access'
 		return redirect(url_for('index', status = msg))
-#@app.route('/update', methods=['POST'])
+
+@app.route('/update/<record_id>', methods = ['GET'])
+@app.route('/update', methods=['POST'])
+def update(record_id=None):
+	if request.method == 'POST':
+		todo_obj = todo_handler.find(request.form['id'])
+		name = request.form['name']
+		todo = request.form['todo']
+		try:
+			todo_handler.update(todo_obj, name, todo)
+			msg = 'Update: Successfully Done.'
+			return redirect(url_for('index', status = msg))
+		except:
+			msg = 'Update: Failed'
+			return redirect(url_for('index', status = msg))
+
+	else:
+		record = todo_handler.find(record_id)
+		if record is None:
+			msg = 'No Record You Specified'
+			return redirect(url_for('index', status = msg))
+
+		return render_template('update.html', record = record)
+
 
 @app.route('/delete/<record_id>', methods = ['GET'])
 @app.route('/delete', methods = ['POST'])

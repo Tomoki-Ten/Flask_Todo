@@ -31,6 +31,11 @@ class TodoHandler:
 		#data = Todo.query.get(id)
 		return data
 		
-	def delete(self, todo):
-		db.session.delete(todo)
+	def delete(self, todo_obj):
+		db.session.delete(todo_obj)
+		db.session.commit()
+
+	def update(self, todo_obj, name, todo):
+		todo_obj.name = name
+		todo_obj.todo = todo
 		db.session.commit()
