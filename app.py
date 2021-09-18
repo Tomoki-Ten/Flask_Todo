@@ -26,7 +26,7 @@ def create():
 		todo = request.form['todo']
 		#try:
 		todo_handler.create(name, todo)
-		msg = 'Successfully Done.'
+		msg = 'Create: Successfully Done.'
 		return redirect(url_for('index', status = msg))
 		"""except:
 			msg = 'Error'
@@ -36,4 +36,43 @@ def create():
 		return redirect(url_for('index', status = msg))
 #@app.route('/update', methods=['POST'])
 
-#@app.route('/delete', methods=['POST'])
+@app.route('/delete/<record_id>', methods = ['GET'])
+@app.route('/delete', methods = ['POST'])
+def delete(record_id=None):
+	if request.method == 'POST':
+		record = todo_handler.find(request.form['id'])
+		#try
+		todo_handler.delete(record)
+		#except
+		msg = 'Delete: Successfully Done.'
+		return redirect(url_for('index', status = msg))
+	else:
+		record = todo_handler.find(record_id)
+		if record is None:
+			msg = 'No Record You Specified.'
+			return redirect(url_for('index', status = msg))
+
+		return render_template('delete.html', record = record)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

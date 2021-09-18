@@ -26,3 +26,11 @@ class TodoHandler:
 		data = Todo.query.all()
 		return data
 
+	def find(self, id):
+		data = Todo.query.filter_by(id = id).first()
+		#data = Todo.query.get(id)
+		return data
+		
+	def delete(self, todo):
+		db.session.delete(todo)
+		db.session.commit()

@@ -39,19 +39,24 @@
 					<th>ID</th>
 					<th>NAME</th>
 					<th>TODO</th>
-					<th>CREATED_AT</th>
-					<th>UPDATED_AT</th>
+					<th>DELETE LINK</th>
+					<!-- <th>CREATED_AT</th>
+					<th>UPDATED_AT</th> -->
 				</tr>
 			</thead>
 			<tbody>
 				{% if todos %}
 				{% for todo in todos %}
 				<tr>
-					<th>{{ todo.id }}</th>
-					<th>{{ todo.name }}</th>
-					<th>{{ todo.todo}}</th>
-					<th>{{ todo.created_at }}</th>
-					<th>{{ todo.updated_at }}</th>
+					<td>{{ todo.id }}</td>
+					<td>{{ todo.name }}</td>
+					<td>{{ todo.todo}}</td>
+					<td>
+						<a href="/delete/{{ todo.id }}">DELETE LINK</a>
+					</td>
+					
+					<!-- <th>{{ todo.created_at }}</th>
+					<th>{{ todo.updated_at }}</th> -->
 				</tr>
 				{% endfor %}
 				{% endif %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewpoint" content="width=device-width, intial-scale=1.0">
+	<title>Todo App</title>
+</head>
+<body>
+	<div>
+		<h1>
+			[Todo]
+		</h1>
+		{% if msg %}
+		<span>{{ msg }}</span>
+		{% endif %}
+	</div>
+	<div>
+		<form method="POST" action="/delete">
+			<div>
+				<span>NAME: </span>
+				<p>{{ record.name }}</p>
+			</div>
+			<div>
+				<span>TODO: </span>
+				<p>{{ record.todo }}</p>
+			</div>
+			<input type="hidden" name="id" value="{{ record.id }}">
+			<button button="submit">DELETE</button>
+		</form>
+	</div>
+</body>
+</html>
