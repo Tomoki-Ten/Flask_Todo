@@ -15,4 +15,8 @@ class Todo(db.Model):
 	todo = db.Column(db.String(255))
 	created_at = db.Column(db.DateTime, default=datetime.now)
 	updated_at = db.Column(db.DateTime, default=datetime.now)
-	
+
+# [*] Execute these commands on your terminal
+# sudo python3
+# from Migration.todo_mig import db
+# db.create_all()
